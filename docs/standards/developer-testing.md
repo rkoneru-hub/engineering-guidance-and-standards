@@ -2,7 +2,7 @@
 layout: standard
 order: 1
 title: Developer Testing
-date: 2024-01-05
+date: 2025-02-07
 id: SEGAS-00013
 tags:
   - Software design
@@ -16,62 +16,71 @@ related:
           href: /principles/write-maintainable-reusable-and-evolutionary-code/
 ---
 
-Testing code forms part of the core of developing code. Testing your changes is necessary to gain assurance that they can be deployed safely to production and that the service will still function as expected.
-
-The intent of any test should be clear as they can provide a form of documentation to the overall solution.
-
-Tests must be easy to understand with a way of measuring test effectiveness (for example coverage). Strong test coverage of a code base contributes towards overall quality of application code, although depending on your application context, it may not necessarily be the only definitive marker of quality code.
-
-A good test should be clear on the intent of the test, have one test case, be readable and should pass every time without changes to the underlying code.
-
-Testing can come in different forms, for example unit/integration/mutation/property based, but all must adhere to the requirements as the following benefits can be achieved:
-
-- Easy to correct failures in code from failed tests
-- Security & confidence when continously integrating code
-- Easy to understand intent and functionality of code
-- Tests are owned by the same team who owns the code and not within a silo external to the team
+Developer testing is not just an auxiliary task; it's a fundamental aspect of the software development process. By integrating testing into the core of code development, teams can ensure higher quality, more reliable software products.
 
 ---
 
 ## Requirement(s)
 
-- [You MUST test early and often](#you-must-test-early-and-often)
-- [You MUST automate tests](#you-must-automate-tests)
-- [You MUST make tests repeatable](#you-must-make-tests-repeatable)
-- [You MUST have a way of measuring the effectiveness of testing](#you-must-have-a-way-of-measuring-the-effectiveness-of-testing)
-- [Tests MUST have a purpose and explicit result](#tests-must-have-a-purpose-and-explicit-result)
+- [Developer Testing Serves Multiple Critical Purposes](#Developer-Testing-Serves-Multiple-Critical-Purposes)
+- [Key Attributes to Consider](#Key-Attributes-to-Consider)
+- [Anatomy of a Good Test should Possess Qualities](#Anatomy-of-a-Good-Test-should-Possess-Qualities)
+- [Diverse Testing Approaches for Comprehensive Code Quality](#Diverse-Testing-Approaches-for-Comprehensive-Code-Quality)
+- [Ownership and Integration](#Ownership-and-Integration)
 - [You MUST think about the edge cases](#you-must-think-about-the-edge-cases)
 
-### You MUST test early and often
+### Developer Testing Serves Multiple Critical Purposes
 
-Writing tests early and often in a software development process reduces the amount of time spent debugging. Good tests written early helps improve the overall assurance and design quality of your application.
+1. Deployment Safety: It provides assurance that code changes can be safely deployed to production environments.
+2. Functionality Verification: Testing ensures that the service continues to function as expected after modifications.
+3. Living Documentation: Well-written tests serve as a form of documentation, illustrating the intended behavior of the code.
 
-Test Driven Development (TDD) is a valuable development approach that can help towards achieving this. This development approach encourages you to think ahead on how your requirements can be met by thinking on how your solution can be tested first at unit level. Once a test is written first albeit failing due to non-existing solution, you can implement your solution to pass the test, and then refactor. "Testing early and often" in this case leads to "refactoring early and often", which continuously improves the quality of your application code and design. This is more commonly referred to as the Red, Green, Refactor approach.
+### Key Attributes to Consider
 
-### You MUST automate tests
+1. Clarity of Intent
+    •	Each test should have a clear, easily understandable purpose.
+    •	Tests should provide insights into the expected behavior of the code.
+ 2. Ease of Understanding
+    •	Tests must be straightforward and comprehensible, even to developers unfamiliar with the codebase.
+    •	Clear, concise test names and descriptions contribute to overall readability.
+3. Measurable Effectiveness
+    •	Utilize metrics such as code coverage to gauge test efficacy.
+    •	Remember that while coverage is important, it's not the sole indicator of quality.
+4. Contribution to Code Quality
+    •	Strong test coverage generally correlates with higher overall code quality and maintainability.
+    •	However, the context of the application should be considered when evaluating quality.
 
-Automating tests enables the tests to be run consistently and often. Automated tests can be run as part of a build pipeline, and block the pipeline if they fail. It also means code is tested often, making sure that everything is working as expected.
+### Anatomy of a Good Test should Possess Qualities
 
-### You MUST make tests repeatable
+1.	Clear intent: The purpose of the test is immediately apparent.
+2.	Single focus: Each test case examines one specific aspect of functionality.
+3.	High readability: The test is easy to understand and maintain.
+4.	Consistency: The test passes reliably without requiring changes to the underlying code.
 
-The ability to repeat the same tests gives confidence that if there is a failure, something has changed to affect that failure. The values that a test rely on shouldn't change based on environments, and tests such as unit tests should not depend on other external factors and dependencies (for example third party APIs) to run.
+### Diverse Testing Approaches for Comprehensive Code Quality
 
-### You MUST have a way of measuring the effectiveness of testing
+1. Unit Testing: Focuses on individual components or functions.
+2. Integration Testing: Ensures different parts of the system work together correctly.
+3. Mutation Testing: Introduces small changes to verify test effectiveness.
+4. Property-based Testing: Generates random inputs to test code properties.
 
-You need to know whether your test effectiveness has changed over the course of your development and that you haven't had any regressions on your changes. Tracking this effectiveness over time helps to understand the landscape of your testing moving forward.
+Regardless of the approach, all tests should adhere to best practices state above to reap the following benefits:
+1. Easy Error Correction: Failed tests provide clear indicators of where issues lie in the code.
+2. Enhanced Security and Confidence: Continuous integration becomes more reliable with a robust test suite.
+3. Improved Code Understanding: Tests offer insights into the intent and functionality of the code.
+4. Shared Ownership: Tests are maintained by the same team that owns the code, promoting accountability and knowledge sharing.
 
-One way of doing this is through monitoring test coverage. Test coverage helps a team understand the amount of code that is tested within a codebase. Setting a minimum threshold (such as 80%) ensures that any new code is tested. Another example is mutation testing.
 
-### Tests MUST have a purpose and explicit result
+### Ownership and Integration
 
-Tests must indicate why they are failing, showing expected and actual responses and the name of the test.
+It's crucial that tests are not isolated from the development process. The team responsible for writing the code should also own and maintain the corresponding tests, fostering a culture of quality and accountability throughout the development lifecycle.
+By prioritizing developer testing as an integral part of the software development process, teams can:
+- Catch and correct errors early in the development cycle
+- Ensure code reliability and maintainability
+- Facilitate better collaboration and knowledge sharing
+- Build confidence in code changes and deployments
 
-An example is through making sure pipelines fail when tests fail, and you're able to see more information about why.
+Ultimately, a robust testing strategy is essential for producing high-quality software that meets user expectations and withstands the challenges of real-world use.
 
-A test failing due to a regression often implies that a functionality has been added that contradict existing (and previous expectations), this should be reviewed to understand why this happened and what needs to be done to fix the regression issue. Although the area of concern may be unfamiliar, the information logged along with the test implementation should provide enough context to help with this review - in understanding what is being tested, what has gone wrong, and hence be able to reason about how the issue can be resolved.
-
-### You MUST think about the edge cases
-
-Testing for all eventualities helps to write code that can handle errors and exceptions. This should include things like testing for illegal or no arguments, dependencies' edge cases (which can often be simulated through mocking dependencies as appropriate).
 
 ---
