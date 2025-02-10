@@ -76,9 +76,9 @@ Regardless of the approach, all tests should adhere to best practices state abov
 It's crucial that tests are not isolated from the development process. The team responsible for writing the code should also own and maintain the corresponding tests, fostering a culture of quality and accountability throughout the development lifecycle.
 By prioritizing developer testing as an integral part of the software development process, teams can:
 - Catch and correct errors early in the development cycle
-- Ensure code reliability and maintainability
-- Facilitate better collaboration and knowledge sharing
-- Build confidence in code changes and deployments
+- Ensure code reliability and maintainability.
+- Facilitate better collaboration and knowledge sharing.
+- Build confidence in code changes and deployments.
 
 Ultimately, a robust testing strategy is essential for producing high-quality software that meets user expectations and withstands the challenges of real-world use.
 
